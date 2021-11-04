@@ -37,8 +37,9 @@ public void paint(Graphics g) {
 }
 /* update the picture variable location */
 private void update() {
-
-	
+y++;
+tx.setToTranslation(x,y);
+tx.scale(.04,.04);	
 	
 }
 

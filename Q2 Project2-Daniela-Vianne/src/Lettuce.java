@@ -40,7 +40,7 @@ import java.awt.Toolkit;
 	/* update the picture variable location */
 	private void update() {
 
-		
+		y++;
 		
 	}
 

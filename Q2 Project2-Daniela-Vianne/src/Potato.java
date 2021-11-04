@@ -39,9 +39,10 @@ import java.awt.Toolkit;
 	}
 	/* update the picture variable location */
 	private void update() {
-
+y++;
 		
-		
+tx.setToTranslation(x, y);
+tx.scale(.2,.2);	
 	}
 
 	private void init(double a, double b) {

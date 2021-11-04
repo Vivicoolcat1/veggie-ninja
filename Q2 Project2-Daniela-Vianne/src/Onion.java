@@ -33,15 +33,16 @@ import java.awt.Toolkit;
 		
 		
 		g2.drawImage(img, tx, null);
-		g.drawOval(x, y-5, 90,95);
+		
 		
 
 	}
 	/* update the picture variable location */
 	private void update() {
-
+y++;
 		
-		
+tx.setToTranslation(x, y);
+tx.scale(.04,.04);
 	}
 
 	private void init(double a, double b) {
@@ -60,9 +61,6 @@ import java.awt.Toolkit;
 		return tempImage;
 	}
 
-//	public Oval getOval() {
-	//	return new Oval(x, y-5, 90, 95);
-	//}
 
 
 	public int getX() {
