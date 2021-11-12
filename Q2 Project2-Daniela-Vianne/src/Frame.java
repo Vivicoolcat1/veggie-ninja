@@ -39,6 +39,10 @@ ca.paint(g);
 	
 	public static void main(String[] arg) {
 		Frame f = new Frame();
+		if (f.collide()==true) {
+			System.out.println("collide works!");
+			
+		}
 	}
 	
 	public Frame() {
@@ -55,7 +59,31 @@ ca.paint(g);
 		f.setVisible(true);
 		
 	}
-	
+	public boolean collide() {
+		if(b.getRect().intersects(sword.getRect())) {
+			return true;
+		}
+		else if(l.getRect().intersects(sword.getRect())) {
+			return true;
+		}
+		else if(ca.getRect().intersects(sword.getRect())) {
+			return true;
+		}
+		else if(c.getRect().intersects(sword.getRect())) {
+			return true;
+		}
+		else if(o.getRect().intersects(sword.getRect())) {
+			return true;
+		}
+		else if(p.getRect().intersects(sword.getRect())) {
+			return true;
+		}
+		return false;
+		
+	}
+	public void die() {
+	bg.
+	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 

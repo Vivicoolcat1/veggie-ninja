@@ -41,7 +41,8 @@ import java.awt.Toolkit;
 	private void update() {
 
 		y++;
-		
+		tx.setToTranslation(x, y);
+		tx.scale(.3,.3);
 	}
 
 	private void init(double a, double b) {

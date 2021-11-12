@@ -62,7 +62,9 @@ tx.scale(.04,.04);
 	}
 
 
-
+public Rectangle getRect() {
+	return new Rectangle(x,y,90,82);
+}
 	public int getX() {
 		return x;
 	}
