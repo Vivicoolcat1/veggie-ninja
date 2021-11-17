@@ -81,9 +81,9 @@ ca.paint(g);
 		return false;
 		
 	}
-	public void die() {
-	bg.
-	}
+	//public void die() {
+	//bg.
+	//}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 
