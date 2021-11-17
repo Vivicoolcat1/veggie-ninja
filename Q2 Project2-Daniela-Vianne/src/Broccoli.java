@@ -10,12 +10,14 @@ import java.net.URL;
 public class Broccoli {
  private int x;
  private int y;
- private Image img; 	
+ private Image img; 
+ 
 	private AffineTransform tx;
 public Broccoli(int x, int y) {
 	this.x=x;
 	this.y=y;
 	img = getImage("/imgs/broccoli.png"); //load the image for Tree
+	
 	tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 
 }
@@ -43,6 +45,11 @@ tx.scale(.04,.04);
 	
 }
 
+public void changePicture(String newFileName) {
+	img = getImage(newFileName);
+	init(x, y);
+}
+
 private void init(double a, double b) {
 	tx.setToTranslation(a, b);
 	tx.scale(.04,.04);
@@ -62,8 +69,7 @@ public Rectangle getRect() {
 	return new Rectangle(x, y, 85, 90);
 }
 public void die() {
-	//switch image when knife and broccoli collide (rectangle method)
-	// reset position to top 
+changePicture("/imgs/slicedBroccoli.png");
 }
 
 public int getX() {

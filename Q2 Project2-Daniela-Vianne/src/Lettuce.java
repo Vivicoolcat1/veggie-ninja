@@ -12,7 +12,7 @@ import java.awt.Toolkit;
 	public class Lettuce {
 	 private int x;
 	 private int y;
-	 private Image img; 	
+	 private Image img; 
 		private AffineTransform tx;
 	public Lettuce(int x, int y) {
 		this.x=x;
@@ -20,6 +20,7 @@ import java.awt.Toolkit;
 		img = getImage("/imgs/Lettuce.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
+			
 	}
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
@@ -60,7 +61,15 @@ import java.awt.Toolkit;
 		}
 		return tempImage;
 	}
-
+	public void changePicture(String newFileName) {
+		img = getImage(newFileName);
+		init(x, y);
+		
+	}
+	public void die() {
+		changePicture("/imgs/slicedCabbege.png");
+		
+		}
 	public Rectangle getRect() {
 		return new Rectangle(x, y, 120, 100);
 	}

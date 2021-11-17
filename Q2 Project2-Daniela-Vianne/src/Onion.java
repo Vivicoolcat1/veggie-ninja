@@ -61,6 +61,13 @@ tx.scale(.04,.04);
 		return tempImage;
 	}
 
+	public void changePicture(String newFileName) {
+		img = getImage(newFileName);
+		init(x, y);
+	}
+	public void die() {
+		changePicture("/imgs/slicedOnion.png");
+		}
 
 public Rectangle getRect() {
 	return new Rectangle(x,y,90,82);

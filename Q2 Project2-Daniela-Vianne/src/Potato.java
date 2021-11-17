@@ -60,6 +60,13 @@ tx.scale(.2,.2);
 		}
 		return tempImage;
 	}
+	public void changePicture(String newFileName) {
+		img = getImage(newFileName);
+		init(x, y);
+	}
+	public void die() {
+		changePicture("/imgs/slicedPotato.png");
+		}
 
 
 public Rectangle getRect() {

@@ -45,8 +45,13 @@ import java.awt.Toolkit;
 		tx.scale(.35,.35);
 
 		
+	}public void changePicture(String newFileName) {
+		img = getImage(newFileName);
+		init(x, y);
 	}
-
+	public void die() {
+		changePicture("/imgs/cutCarrot.png");
+		}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(.35,.35);

@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 	 private int x;
 	 private int y;
 	 private Image img; 	
+	 
 		private AffineTransform tx;
 	public Corn(int x, int y) {
 		this.x=x;
@@ -32,15 +33,29 @@ import java.awt.Toolkit;
 		
 		
 		g2.drawImage(img, tx, null);
-		
+		g.drawRect(x,y,120,100);
 		
 
 	}
 	/* update the picture variable location */
 	private void update() {
 
+		y++;
 		
-		
+		tx.setToTranslation(x, y);
+		tx.scale(.04,.04);
+	}
+public Rectangle getRect() {
+	return new Rectangle(x,y,120,100);
+}
+
+public void changePicture(String newFileName) {
+	img = getImage(newFileName);
+	init(x, y);
+}
+
+public void die() {
+	changePicture("/imgs/cutCorn.png");
 	}
 
 	private void init(double a, double b) {
@@ -60,9 +75,7 @@ import java.awt.Toolkit;
 	}
 
 
-public Rectangle getRect() {
-	return new Rectangle(x,y,145,62);
-}
+
 	public int getX() {
 		return x;
 	}
