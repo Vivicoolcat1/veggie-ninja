@@ -7,16 +7,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
+import java.util.Random;
 public class Broccoli {
  private int x;
  private int y;
  private Image img; 
- 
+ private Random r;
+	private int respX;
 	private AffineTransform tx;
 public Broccoli(int x, int y) {
 	this.x=x;
 	this.y=y;
 	img = getImage("/imgs/broccoli.png"); //load the image for Tree
+	r=new Random();
 	
 	tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 
@@ -39,10 +42,10 @@ public void paint(Graphics g) {
 }
 /* update the picture variable location */
 private void update() {
-y++;
+y+=4;
 tx.setToTranslation(x,y);
 tx.scale(.04,.04);	
-	
+respX=r.nextInt(((650-10)+1)+10);
 }
 
 public void changePicture(String newFileName) {
@@ -70,6 +73,12 @@ public Rectangle getRect() {
 }
 public void die() {
 changePicture("/imgs/slicedBroccoli.png");
+
+}
+public void respawn() {
+	changePicture("/imgs/broccoli.png");
+	y=-100;
+	x=respX;
 }
 
 public int getX() {
