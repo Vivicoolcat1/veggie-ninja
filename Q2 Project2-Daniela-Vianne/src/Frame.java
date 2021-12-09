@@ -2,9 +2,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,6 +14,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.net.URL;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,6 +33,14 @@ Onion o = new Onion(280,100);
 Knife sword= new Knife(250,490);
 Potato p= new Potato(400, 300);
 Carrot ca= new Carrot(300, 400);
+Table t=new Table(-150,450);
+boolean bisDead=false;
+boolean oisDead=false;
+boolean cisDead=false;
+boolean lisDead=false;
+boolean pisDead=false;
+boolean caisDead=false;
+ Image img =getImage("/imgs/x.png");
 
 public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -41,7 +52,12 @@ o.paint(g);
 sword.paint(g);
 p.paint(g);
 ca.paint(g);
+t.paint(g);
 collide();
+
+if(bisDead==false && b.getY()>580) {
+	g.drawImage(img, 200, 100, 250,100, 250, 200, 200, 200, null);
+}
 }
 	
 	public static void main(String[] arg) {
@@ -64,25 +80,59 @@ collide();
 		f.setVisible(true);
 		
 	}
-	
+	private Image getImage(String path) {
+		Image tempImage = null;
+		try {
+			URL imageURL = Background.class.getResource(path);
+			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tempImage;
+	}
 	public void collide() {
 		if(b.getRect().intersects(sword.getRect())) {
 			b.die();
+			bisDead=true;
+			if(lisDead==true) {
+				l.respawn();
+			}
+		
 		}
 	    if(l.getRect().intersects(sword.getRect())) {
 			l.die();
+			lisDead=true;
+			if(caisDead==true) {
+				ca.respawn();
+			}
 		}
 		if(ca.getRect().intersects(sword.getRect())) {
 			ca.die();
+			caisDead=true;
+			if(cisDead==true) {
+				c.respawn();
+			}
 		}
 		if(c.getRect().intersects(sword.getRect())) {
 			c.die();
+			cisDead=true;
+			if(oisDead==true) {
+				o.respawn();
+			}
 		}
 		if(o.getRect().intersects(sword.getRect())) {
 			o.die();
+			oisDead=true;
+			if(pisDead==true) {
+				p.respawn();
+			}
 		}
 		if(p.getRect().intersects(sword.getRect())) {
 			p.die();
+			pisDead=true;
+			if(bisDead==true) {
+				b.respawn();
+			}
 		}
 		
 	}
@@ -158,4 +208,3 @@ collide();
 	}
 
 }
-
