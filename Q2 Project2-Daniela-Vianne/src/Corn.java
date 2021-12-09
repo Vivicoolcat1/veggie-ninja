@@ -8,16 +8,21 @@ import java.awt.Toolkit;
 	import java.awt.event.MouseListener;
 	import java.awt.geom.AffineTransform;
 	import java.net.URL;
+import java.util.Random;
 	public class Corn {
 	 private int x;
 	 private int y;
-	 private Image img; 	
+	 private Image img; 
+	 private Random r;
+		private int respX;
 	 
 		private AffineTransform tx;
 	public Corn(int x, int y) {
 		this.x=x;
 		this.y=y;
-		img = getImage("/imgs/Corn.png"); //load the image for Tree
+		img = getImage("/imgs/Corn.png");//load the image for Tree
+		r=new Random();
+		
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
 	}
@@ -39,8 +44,8 @@ import java.awt.Toolkit;
 	}
 	/* update the picture variable location */
 	private void update() {
-
-		y++;
+		respX=r.nextInt(((650-10)+1)+10);
+		y+=4;
 		
 		tx.setToTranslation(x, y);
 		tx.scale(.04,.04);
@@ -57,7 +62,11 @@ public void changePicture(String newFileName) {
 public void die() {
 	changePicture("/imgs/cutCorn.png");
 	}
-
+public void respawn() {
+	changePicture("/imgs/Corn.png");
+	y=-100;
+	x=respX;
+}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(.04,.04);
