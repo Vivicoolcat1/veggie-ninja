@@ -9,14 +9,20 @@ import java.awt.Toolkit;
 	import java.awt.event.MouseListener;
 	import java.awt.geom.AffineTransform;
 	import java.net.URL;
+import java.util.Random;
 	public class Carrot {
 	 private int x;
 	 private int y;
-	 private Image img; 	
+	 private Image img; 
+	 private Random r;
+		private int respX;
+
 		private AffineTransform tx;
 	public Carrot(int x, int y) {
 		this.x=x;
 		this.y=y;
+		r=new Random();
+		
 		img = getImage("/imgs/carrot.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
@@ -39,8 +45,8 @@ import java.awt.Toolkit;
 	}
 	/* update the picture variable location */
 	private void update() {
-
-		y++;
+		respX=r.nextInt(((650-10)+1)+10);
+		y+=4;
 		tx.setToTranslation(x, y);
 		tx.scale(.35,.35);
 
@@ -52,6 +58,11 @@ import java.awt.Toolkit;
 	public void die() {
 		changePicture("/imgs/cutCarrot.png");
 		}
+	public void respawn() {
+		changePicture("/imgs/carrot.png");
+		y=-100;
+		x=respX;
+	}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(.35,.35);
