@@ -9,14 +9,19 @@ import java.awt.Toolkit;
 	import java.awt.event.MouseListener;
 	import java.awt.geom.AffineTransform;
 	import java.net.URL;
+import java.util.Random;
 	public class Potato {
 	 private int x;
 	 private int y;
-	 private Image img; 	
+	 private Image img; 
+	 private Random r;
+		private int respX;
 		private AffineTransform tx;
 	public Potato(int x, int y) {
 		this.x=x;
 		this.y=y;
+		r=new Random();
+		respX=r.nextInt(((650-10)+1)+10);
 		img = getImage("/imgs/Potato.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
@@ -39,8 +44,8 @@ import java.awt.Toolkit;
 	}
 	/* update the picture variable location */
 	private void update() {
-y++;
-		
+y+=4;
+respX=r.nextInt(((650-10)+1)+10);
 tx.setToTranslation(x, y);
 tx.scale(.2,.2);	
 	}
@@ -67,7 +72,11 @@ tx.scale(.2,.2);
 	public void die() {
 		changePicture("/imgs/slicedPotato.png");
 		}
-
+	public void respawn() {
+		changePicture("/imgs/Potato.png");
+		y=-100;
+		x=respX;
+	}
 
 public Rectangle getRect() {
 	return new Rectangle(x+30,y+10,90,80);
