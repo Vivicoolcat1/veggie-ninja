@@ -1,4 +1,3 @@
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -78,4 +77,3 @@ public void setPositioin(int x2, int y2) {
 	tx.scale(.1,.1);
 }
 }
-
