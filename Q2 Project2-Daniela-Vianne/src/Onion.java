@@ -9,14 +9,19 @@ import java.awt.Toolkit;
 	import java.awt.event.MouseListener;
 	import java.awt.geom.AffineTransform;
 	import java.net.URL;
+import java.util.Random;
 	public class Onion {
 	 private int x;
 	 private int y;
 	 private Image img; 	
 		private AffineTransform tx;
+		private Random r;
+		private int respX;
 	public Onion(int x, int y) {
 		this.x=x;
 		this.y=y;
+		r=new Random();
+		respX=r.nextInt(((650-10)+1)+10);
 		img = getImage("/imgs/onion.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
@@ -34,13 +39,13 @@ import java.awt.Toolkit;
 		
 		g2.drawImage(img, tx, null);
 		
-		
+		g.drawRect(x,y,90,82);
 
 	}
 	/* update the picture variable location */
 	private void update() {
-y++;
-		
+y+=4;
+respX=r.nextInt(((650-10)+1)+10);
 tx.setToTranslation(x, y);
 tx.scale(.04,.04);
 	}
@@ -68,7 +73,11 @@ tx.scale(.04,.04);
 	public void die() {
 		changePicture("/imgs/slicedOnion.png");
 		}
-
+public void respawn() {
+	changePicture("/imgs/onion.png");
+	y=-100;
+	x=respX;
+}
 public Rectangle getRect() {
 	return new Rectangle(x,y,90,82);
 }
