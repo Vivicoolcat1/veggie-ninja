@@ -44,7 +44,7 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-y+=4;
+y+=10;
 respX=r.nextInt(((650-10)+1)+10);
 tx.setToTranslation(x, y);
 tx.scale(.2,.2);	
