@@ -45,8 +45,8 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10);
-		y+=2;
+		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
+		y+=2; //falling down 
 		tx.setToTranslation(x, y);
 		tx.scale(.3,.3);
 	}
@@ -71,6 +71,8 @@ import java.util.Random;
 		init(x, y);
 		
 	}
+		
+	//changing picture after collision 
 	public void die() {
 		changePicture("/imgs/slicedCabbege.png");
 		
@@ -84,6 +86,7 @@ import java.util.Random;
 		return new Rectangle(x, y, 120, 100);
 	}
 
+//getters and setters 
 	public int getX() {
 		return x;
 	}
