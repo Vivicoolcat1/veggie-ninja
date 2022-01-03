@@ -44,10 +44,10 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-y+=8;
-respX=r.nextInt(((650-10)+1)+10);
-tx.setToTranslation(x, y);
-tx.scale(.04,.04);
+		y+=8; //falling down
+		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
+		tx.setToTranslation(x, y);
+		tx.scale(.04,.04);
 	}
 
 	private void init(double a, double b) {
@@ -70,6 +70,8 @@ tx.scale(.04,.04);
 		img = getImage(newFileName);
 		init(x, y);
 	}
+		
+//changing picture after collision 
 	public void die() {
 		changePicture("/imgs/slicedOnion.png");
 		}
@@ -81,6 +83,8 @@ public void respawn() {
 public Rectangle getRect() {
 	return new Rectangle(x,y,90,82);
 }
+		
+//getters and setters 
 	public int getX() {
 		return x;
 	}
