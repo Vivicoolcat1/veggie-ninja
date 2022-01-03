@@ -44,8 +44,8 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10);
-		y+=3;
+		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
+		y+=3; //falling down 
 		
 		tx.setToTranslation(x, y);
 		tx.scale(.04,.04);
@@ -59,6 +59,7 @@ public void changePicture(String newFileName) {
 	init(x, y);
 }
 
+//changing picture after collision 
 public void die() {
 	changePicture("/imgs/cutCorn.png");
 	}
@@ -84,7 +85,7 @@ public void respawn() {
 	}
 
 
-
+//getters and setters 
 	public int getX() {
 		return x;
 	}
