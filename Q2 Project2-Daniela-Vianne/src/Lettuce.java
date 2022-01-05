@@ -24,28 +24,24 @@ import java.util.Random;
 		respX=r.nextInt(((650-10)+1)+10);
 		img = getImage("/imgs/Lettuce.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
-			init(x, y); 
-			
+			init(x, y); 		
 	}
+	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
 		
-		
 		//call update to update the actualy picture location
 		update();
-		
-		
-		
-		
+			
 		g2.drawImage(img, tx, null);
-		g.drawRect(x, y, 120, 100);
-		
+		g.drawRect(x, y, 120, 100);	
 
 	}
+	
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
+		respX=r.nextInt(((650-10)+1)+10); // randomizing x value 
 		y+=2; //falling down 
 		tx.setToTranslation(x, y);
 		tx.scale(.3,.3);
@@ -66,27 +62,30 @@ import java.util.Random;
 		}
 		return tempImage;
 	}
+	
 	public void changePicture(String newFileName) {
 		img = getImage(newFileName);
 		init(x, y);
 		
 	}
-		
-	//changing picture after collision 
+	
+	//changing image after collision
 	public void die() {
 		changePicture("/imgs/slicedCabbege.png");
 		
 		}
+	
 	public void respawn() {
 		changePicture("/imgs/Lettuce.png");
 		y=-100;
 		x=respX;
 	}
+	
 	public Rectangle getRect() {
 		return new Rectangle(x, y, 120, 100);
 	}
 
-//getters and setters 
+//getters and setters
 	public int getX() {
 		return x;
 	}
@@ -100,5 +99,3 @@ import java.util.Random;
 		y=val;
 	}
 	}
-
-
