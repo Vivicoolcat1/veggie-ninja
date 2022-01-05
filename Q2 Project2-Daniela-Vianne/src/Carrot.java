@@ -14,13 +14,17 @@ import java.util.Random;
 	 private int x;
 	 private int y;
 	 private Image img; 
-	 private Random r;
+	 private Random r; 
+	 private boolean isAlive;
+	 private boolean hasBeenHit;
 		private int respX;
 
 		private AffineTransform tx;
-	public Carrot(int x, int y) {
+	public Carrot(int x, int y,boolean isAlive, boolean hasBeenHit) {
 		this.x=x;
 		this.y=y;
+		this.isAlive=isAlive;
+		this.hasBeenHit=hasBeenHit;
 		r=new Random();
 		
 		img = getImage("/imgs/carrot.png"); //load the image for Tree
@@ -40,12 +44,12 @@ import java.util.Random;
 		
 		g2.drawImage(img, tx, null);
 		
-		g.drawRect(x+5, y+7, 170,45);
+	
 
 	}
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10); // randomizing x value 
+		respX=r.nextInt(((650-10)+1)+10); //randomizing x value
 		y+=7; //falling down 
 		tx.setToTranslation(x, y);
 		tx.scale(.35,.35);
@@ -55,7 +59,7 @@ import java.util.Random;
 		img = getImage(newFileName);
 		init(x, y);
 	}
-	
+		
 	//changing picture after collision 
 	public void die() {
 		changePicture("/imgs/cutCarrot.png");
@@ -85,7 +89,7 @@ import java.util.Random;
 public Rectangle getRect() {
 	return new Rectangle (x+5, y+7, 170,45);
 }
-
+		
 //getters and setters 
 	public int getX() {
 		return x;
@@ -93,11 +97,24 @@ public Rectangle getRect() {
 	public int getY() {
 		return y;
 	}
+	public boolean getHit() {
+		return hasBeenHit;
+	}
+	public boolean getAlive() {
+		return isAlive;
+	}
 	public void setX(int val) {
 		x=val;
 	}
 	public void setY(int val) {
 		y=val;
 	}
+	public void setDead(boolean sat) {
+		isAlive=sat;
 	}
+	public void setHit(boolean stat) {
+		hasBeenHit=stat;
+	}
+	}
+
 
