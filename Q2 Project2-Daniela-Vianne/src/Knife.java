@@ -29,7 +29,7 @@ public void paint(Graphics g) {
 
 	
 	g2.drawImage(img, tx, null);
-	g.drawRect(x+90, y+17, 80, 58);
+	
 	
 }
 /* update the picture variable location */
