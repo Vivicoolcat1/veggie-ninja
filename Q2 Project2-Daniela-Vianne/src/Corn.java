@@ -1,4 +1,5 @@
 
+	
 	import java.awt.Graphics;
 	import java.awt.Graphics2D;
 	import java.awt.Image;
@@ -17,6 +18,8 @@ import java.util.Random;
 		private int respX;
 	 
 		private AffineTransform tx;
+		
+		
 	public Corn(int x, int y) {
 		this.x=x;
 		this.y=y;
@@ -44,7 +47,7 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
+		respX=r.nextInt(((650-10)+1)+10); //randomize x value
 		y+=3; //falling down 
 		
 		tx.setToTranslation(x, y);
@@ -59,10 +62,11 @@ public void changePicture(String newFileName) {
 	init(x, y);
 }
 
-//changing picture after collision 
+//changes image when veggie is hit
 public void die() {
 	changePicture("/imgs/cutCorn.png");
-	}
+}
+
 public void respawn() {
 	changePicture("/imgs/Corn.png");
 	y=-100;
@@ -84,8 +88,7 @@ public void respawn() {
 		return tempImage;
 	}
 
-
-//getters and setters 
+//getters and setters
 	public int getX() {
 		return x;
 	}
@@ -99,5 +102,4 @@ public void respawn() {
 		y=val;
 	}
 	}
-
 
