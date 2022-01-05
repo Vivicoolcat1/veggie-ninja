@@ -55,7 +55,7 @@ private Image getImage(String path) {
 
 
 public Rectangle getRect() {
-	return new Rectangle(x+30, y+8, 150, 170);
+	return new Rectangle(x+90, y+17, 80, 58);
 }
 public int getX() {
 	return x;
