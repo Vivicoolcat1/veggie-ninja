@@ -45,8 +45,8 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10); //randomizing x value
-		y+=6; //falling down 
+		respX=r.nextInt(((650-10)+1)+10); // randomizing x value 
+		y+=7; //falling down 
 		tx.setToTranslation(x, y);
 		tx.scale(.35,.35);
 
@@ -55,7 +55,7 @@ import java.util.Random;
 		img = getImage(newFileName);
 		init(x, y);
 	}
-		
+	
 	//changing picture after collision 
 	public void die() {
 		changePicture("/imgs/cutCarrot.png");
@@ -85,7 +85,7 @@ import java.util.Random;
 public Rectangle getRect() {
 	return new Rectangle (x+5, y+7, 170,45);
 }
-		
+
 //getters and setters 
 	public int getX() {
 		return x;
@@ -100,5 +100,4 @@ public Rectangle getRect() {
 		y=val;
 	}
 	}
-
 
