@@ -15,18 +15,21 @@ import java.util.Random;
 	 private int y;
 	 private Image img; 
 	 private Random r;
+	 private boolean isAlive;
+	 private boolean hasBeenHit;
 		private int respX;
 		private AffineTransform tx;
-	public Potato(int x, int y) {
+	public Potato(int x, int y,boolean isAlive, boolean hasBeenHit) {
 		this.x=x;
 		this.y=y;
+		this.isAlive=isAlive;
+		this.hasBeenHit=hasBeenHit;
 		r=new Random();
 		respX=r.nextInt(((650-10)+1)+10);
 		img = getImage("/imgs/Potato.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
 	}
-	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
@@ -34,13 +37,15 @@ import java.util.Random;
 		
 		//call update to update the actualy picture location
 		update();
-				
+		
+		
+		
+		
 		g2.drawImage(img, tx, null);
 		
-		g.drawRect(x+30,y+10,90,80);
+		
 
 	}
-	
 	/* update the picture variable location */
 	private void update() {
 		y+=5; //falling down 
@@ -64,17 +69,15 @@ import java.util.Random;
 		}
 		return tempImage;
 	}
-	
 	public void changePicture(String newFileName) {
 		img = getImage(newFileName);
 		init(x, y);
 	}
-	
-	//changing picture afetr collision 
+		
+//changing pictures after collision 
 	public void die() {
 		changePicture("/imgs/slicedPotato.png");
 		}
-	
 	public void respawn() {
 		changePicture("/imgs/Potato.png");
 		y=-100;
@@ -84,7 +87,7 @@ import java.util.Random;
 public Rectangle getRect() {
 	return new Rectangle(x+30,y+10,90,80);
 }
-
+		
 //getters and setters 
 	public int getX() {
 		return x;
@@ -92,12 +95,23 @@ public Rectangle getRect() {
 	public int getY() {
 		return y;
 	}
+	public boolean getHit() {
+		return hasBeenHit;
+	}
+	public boolean getAlive() {
+		return isAlive;
+	}
 	public void setX(int val) {
 		x=val;
 	}
 	public void setY(int val) {
 		y=val;
 	}
+	public void setDead(boolean sat) {
+		isAlive=sat;
 	}
-
+	public void setHit(boolean stat) {
+		hasBeenHit=stat;
+	}
+	}
 
