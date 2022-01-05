@@ -32,20 +32,17 @@ public void paint(Graphics g) {
 	//call update to update the actualy picture location
 	update();
 	
-	
-	
-	
 	g2.drawImage(img, tx, null);
 	g.drawRect(x, y, 85, 90);
 	
-
 }
+
 /* update the picture variable location */
 private void update() {
-y+=4; //falling down 
-tx.setToTranslation(x,y); //randomizing x value
-tx.scale(.04,.04);	
-respX=r.nextInt(((650-10)+1)+10);
+	y+=4; //falling down 
+	tx.setToTranslation(x,y); // randomizing x value 
+	tx.scale(.04,.04);	
+	respX=r.nextInt(((650-10)+1)+10);
 }
 
 public void changePicture(String newFileName) {
@@ -68,22 +65,24 @@ private Image getImage(String path) {
 	}
 	return tempImage;
 }
+
 public Rectangle getRect() {
 	return new Rectangle(x, y, 85, 90);
 }
-	
-//changing picture after collision 	
+
+//changing picture after collision 
 public void die() {
 changePicture("/imgs/slicedBroccoli.png");
 
 }
+
 public void respawn() {
 	changePicture("/imgs/broccoli.png");
 	y=-100;
 	x=respX;
 }
 
-//getters and setters
+//getters and setters 
 public int getX() {
 	return x;
 }
