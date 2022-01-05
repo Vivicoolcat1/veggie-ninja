@@ -13,11 +13,15 @@ public class Broccoli {
  private int y;
  private Image img; 
  private Random r;
+ private boolean isAlive;
+ private boolean hasBeenHit;
 	private int respX;
 	private AffineTransform tx;
-public Broccoli(int x, int y) {
+public Broccoli(int x, int y,boolean isAlive, boolean hasBeenHit) {
 	this.x=x;
 	this.y=y;
+	this.isAlive=isAlive;
+	this.hasBeenHit=hasBeenHit;
 	img = getImage("/imgs/broccoli.png"); //load the image for Tree
 	r=new Random();
 	
@@ -32,17 +36,19 @@ public void paint(Graphics g) {
 	//call update to update the actualy picture location
 	update();
 	
-	g2.drawImage(img, tx, null);
-	g.drawRect(x, y, 85, 90);
 	
-}
+	
+	
+	g2.drawImage(img, tx, null);
+	
 
+}
 /* update the picture variable location */
 private void update() {
-	y+=4; //falling down 
-	tx.setToTranslation(x,y); // randomizing x value 
-	tx.scale(.04,.04);	
-	respX=r.nextInt(((650-10)+1)+10);
+y+=4; //falling down 
+tx.setToTranslation(x,y); //randomizing x value
+tx.scale(.04,.04);	
+respX=r.nextInt(((650-10)+1)+10);
 }
 
 public void changePicture(String newFileName) {
@@ -65,34 +71,44 @@ private Image getImage(String path) {
 	}
 	return tempImage;
 }
-
 public Rectangle getRect() {
 	return new Rectangle(x, y, 85, 90);
 }
-
-//changing picture after collision 
+	
+//changing picture after collision 	
 public void die() {
 changePicture("/imgs/slicedBroccoli.png");
 
 }
-
 public void respawn() {
 	changePicture("/imgs/broccoli.png");
 	y=-100;
 	x=respX;
 }
 
-//getters and setters 
+//getters and setters
 public int getX() {
 	return x;
 }
 public int getY() {
 	return y;
 }
+public boolean getHit() {
+	return hasBeenHit;
+}
+public boolean getAlive() {
+	return isAlive;
+}
 public void setX(int val) {
 	x=val;
 }
 public void setY(int val) {
 	y=val;
+}
+public void setDead(boolean sat) {
+	isAlive=sat;
+}
+public void setHit(boolean stat) {
+	hasBeenHit=stat;
 }
 }
