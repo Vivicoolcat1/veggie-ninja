@@ -32,12 +32,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Background 	bg 	= new Background(0, -100);
 	Knife sword= new Knife(250,490);
 	Table ta=new Table(-150,450);
-	boolean bisDead=false;
-	boolean oisDead=false;
-	boolean cisDead=false;
-	boolean lisDead=false;
-	boolean pisDead=false;
-	boolean caisDead=false;
 	//initializing object arrays
 	Broccoli[] broc = new Broccoli[30];
 	Lettuce[] let = new Lettuce[30];
