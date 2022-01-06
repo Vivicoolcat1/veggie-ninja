@@ -16,15 +16,19 @@ public class Broccoli {
  private boolean isAlive;
  private boolean hasBeenHit;
 	private int respX;
+	private int startingY;
+	private int yv;
 	private AffineTransform tx;
 public Broccoli(int x, int y,boolean isAlive, boolean hasBeenHit) {
+	startingY=y;
+	yv=0;
 	this.x=x;
 	this.y=y;
 	this.isAlive=isAlive;
 	this.hasBeenHit=hasBeenHit;
 	img = getImage("/imgs/broccoli.png"); //load the image for Tree
 	r=new Random();
-	
+	respX=r.nextInt(((550-10)+1)+10);
 	tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 
 }
@@ -45,7 +49,7 @@ public void paint(Graphics g) {
 }
 /* update the picture variable location */
 private void update() {
-y+=4; //falling down 
+y+=yv; //falling down 
 tx.setToTranslation(x,y); //randomizing x value
 tx.scale(.04,.04);	
 respX=r.nextInt(((650-10)+1)+10);
@@ -82,10 +86,12 @@ changePicture("/imgs/slicedBroccoli.png");
 }
 public void respawn() {
 	changePicture("/imgs/broccoli.png");
-	y=-100;
+	y=startingY;
 	x=respX;
 }
-
+public void start() {
+	yv=6;
+}
 //getters and setters
 public int getX() {
 	return x;
