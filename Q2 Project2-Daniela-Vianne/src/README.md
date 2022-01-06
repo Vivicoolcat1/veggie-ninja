@@ -2,7 +2,7 @@
 
 We hope you enjoy this new version of the universally known game of Fruit Ninja! 
 
-![veggieNinjaImage](https://user-images.githubusercontent.com/78383220/148292255-aec1c7eb-b517-41d8-b463-8537f6c01d1c.PNG)
+![README](https://user-images.githubusercontent.com/78383220/148446178-61ce2dbc-4a06-493f-9e7c-5281082f42b6.PNG)
 
 ## Description
 
