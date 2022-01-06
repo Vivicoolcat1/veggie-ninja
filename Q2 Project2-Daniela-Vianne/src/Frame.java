@@ -30,60 +30,54 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Random r = new Random();
 	//CREATE THE OBJECT (STEP 1)
 	Background 	bg 	= new Background(0, -100);
-	
-
-Knife sword= new Knife(250,490);
-
-Table ta=new Table(-150,450);
-boolean bisDead=false;
-boolean oisDead=false;
-boolean cisDead=false;
-boolean lisDead=false;
-boolean pisDead=false;
-boolean caisDead=false;
-//changes
-Broccoli[] broc = new Broccoli[20];
-Lettuce[] let = new Lettuce[20];
-Corn[] corn = new Corn[20];
-Onion[] on = new Onion[20];
-Potato[] po = new Potato[20];
-Carrot[] car = new Carrot[20];
- Image img =getImage("/imgs/x.png");
+	Knife sword= new Knife(250,490);
+	Table ta=new Table(-150,450);
+	boolean bisDead=false;
+	boolean oisDead=false;
+	boolean cisDead=false;
+	boolean lisDead=false;
+	boolean pisDead=false;
+	boolean caisDead=false;
+	//initializing object arrays
+	Broccoli[] broc = new Broccoli[20];
+	Lettuce[] let = new Lettuce[20];
+	Corn[] corn = new Corn[20];
+	Onion[] on = new Onion[20];
+	Potato[] po = new Potato[20];
+	Carrot[] car = new Carrot[20];
+	 Image img =getImage("/imgs/x.png");
  long startTime=System.currentTimeMillis();
  long timeRemaining;
  long elapsedTime;
 String a;
 String b= "Press E to start the game";
+	
+//painting the objects
 public void paint(Graphics g) {
-		super.paintComponent(g);
-		bg.paint(g);
-
-sword.paint(g);
+	super.paintComponent(g);
+	bg.paint(g);
+	sword.paint(g);
+	ta.paint(g);
+	collide();
+	
+//scoring
 g.setColor(Color.white);
 g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 g.drawString(b,100,150);
-ta.paint(g);
-collide();
-
 g.drawString("Score: " + score , 30, 70);
 
 //timing
-
 long elapsedTime = System.currentTimeMillis() - startTime;
 long timeRemaining = 60000 - elapsedTime; 
 String a="Time Remaining: " + timeRemaining/1000;
 g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 if((int)timeRemaining<=0) {
 	a="Time Remaining: 0";
-	
 	g.drawString("Times Up! Your Score is "+ score + " out of 120", 100,100);
 	g.drawString("Press Space to try again!",100,150);
-	
 }
 
 g.drawString(a, 400, 70);
-
-
 
 for(int i = 0; i<broc.length; i++) {
 	broc[i].paint(g);
@@ -99,6 +93,8 @@ for(int i = 0; i<broc.length; i++) {
 		Frame f = new Frame();
 		
 	}
+	
+	//objects enter the screen 
 	public void start() {
 		for(int i=0;i<broc.length;i++) {
 			broc[i].start();
@@ -108,6 +104,7 @@ for(int i = 0; i<broc.length; i++) {
 			on[i].start();
 			po[i].start();
 		}
+		
 		b= "";
 		score=0;
 		startTime=System.currentTimeMillis();
@@ -129,9 +126,7 @@ for(int i = 0; i<broc.length; i++) {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 
-
-
-			
+		       // initializing the objects 
 			for(int i = 0; i<broc.length; i++) {
 					broc[i] = new Broccoli(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 					let[i] = new Lettuce(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
@@ -139,9 +134,7 @@ for(int i = 0; i<broc.length; i++) {
 					corn[i] = new Corn(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 					po[i] = new Potato(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 					car[i] = new Carrot(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
-				}
-
-				
+			}
 		
 	}
 	
@@ -156,6 +149,8 @@ for(int i = 0; i<broc.length; i++) {
 		}
 		return tempImage;
 	}
+	
+	//returns objects back to their starting position, restarting the game 
 	public void restart() {
 		for(int i=0;i<broc.length;i++) {
 			broc[i].respawn();
@@ -170,13 +165,12 @@ for(int i = 0; i<broc.length; i++) {
 			corn[i].setHit(false);
 			on[i].setHit(false);
 			po[i].setHit(false);}
-		score=0;
+			score=0;
 			startTime=System.currentTimeMillis();
 			a="Time Remaining: " + timeRemaining/1000;
-		
-		
 	}
 	
+	//collision 
 	public void collide() {
 		for(int i = 0; i<broc.length; i++) {
 			if(broc[i].getRect().intersects(sword.getRect())) {
@@ -237,9 +231,7 @@ for(int i = 0; i<broc.length; i++) {
 	    		score ++;
 	    	po[i].setHit(true);
 	    	}
-		}
-
-		
+		}	
 	}
 	
 	
