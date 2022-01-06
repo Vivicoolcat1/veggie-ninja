@@ -19,19 +19,19 @@ public Knife(int x, int y) {
 	tx = AffineTransform.getTranslateInstance(x, y );
 		init(x,y); 
 }
+	
+//paint method
 public void paint(Graphics g) {
 	//these are the 2 lines of code needed draw an image on the screen
 	Graphics2D g2 = (Graphics2D) g;
 	
-	
 	//call update to update the actually picture location
 	update(); 
-
 	
 	g2.drawImage(img, tx, null);
 	
-	
 }
+	
 /* update the picture variable location */
 private void update() {
 
@@ -53,10 +53,12 @@ private Image getImage(String path) {
 	return tempImage;
 }
 
-
+//creates rectangle around object for collision 
 public Rectangle getRect() {
 	return new Rectangle(x+90, y+17, 80, 58);
 }
+	
+//getters and setters 
 public int getX() {
 	return x;
 }
