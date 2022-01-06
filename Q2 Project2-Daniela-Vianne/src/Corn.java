@@ -34,22 +34,19 @@ import java.util.Random;
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
 	}
+	
+	//paint method
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
 		
-		
 		//call update to update the actualy picture location
 		update();
 		
-		
-		
-		
 		g2.drawImage(img, tx, null);
 	
-		
-
 	}
+		
 	/* update the picture variable location */
 	private void update() {
 		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
@@ -58,9 +55,13 @@ import java.util.Random;
 		tx.setToTranslation(x, y);
 		tx.scale(.04,.04);
 	}
+	
+	//gravity and initial velocity 
 	public void start() {
 		yv=5;
 	}
+
+//creates a rectangle around object for collision 
 public Rectangle getRect() {
 	return new Rectangle(x,y,120,100);
 }
@@ -75,6 +76,8 @@ public void die() {
 	changePicture("/imgs/cutCorn.png");
 
 	}
+		
+//changes image of object and places object back at starting position 
 public void respawn() {
 	changePicture("/imgs/Corn.png");
 	y=startingY;
