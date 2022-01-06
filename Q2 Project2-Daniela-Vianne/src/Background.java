@@ -19,7 +19,6 @@ public class Background{
 		init(x, y); 				//initialize the location of the image
 									//use your variables
 	}
-
 	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
@@ -29,21 +28,16 @@ public class Background{
 		//call update to update the actualy picture location
 		update();
 		
-		
-		
-		
 		g2.drawImage(img, tx, null);
-		
-		
 
-	}
-	/* update the picture variable location */
-	private void update() {
-
-		
-		
 	}
 	
+	/* update the picture variable location */
+	private void update() {
+	
+	}
+	
+	//setting the size of the background image
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(.8,1.2);
