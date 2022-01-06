@@ -94,7 +94,7 @@ public void respawn() {
 
 //gravity and starting velocity  
 public void start() {
-	yv=6;
+	yv=11;
 }
 	
 //getters and setters
