@@ -18,6 +18,7 @@ import java.awt.event.MouseMotionListener;
 import java.net.URL;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -40,32 +41,47 @@ boolean cisDead=false;
 boolean lisDead=false;
 boolean pisDead=false;
 boolean caisDead=false;
-Broccoli[] broc = new Broccoli[10];
-Lettuce[] let = new Lettuce[10];
-Corn[] corn = new Corn[10];
-Onion[] on = new Onion[10];
-Potato[] po = new Potato[10];
-Carrot[] car = new Carrot[10];
+//changes
+Broccoli[] broc = new Broccoli[20];
+Lettuce[] let = new Lettuce[20];
+Corn[] corn = new Corn[20];
+Onion[] on = new Onion[20];
+Potato[] po = new Potato[20];
+Carrot[] car = new Carrot[20];
  Image img =getImage("/imgs/x.png");
  long startTime=System.currentTimeMillis();
-
+ long timeRemaining;
+ long elapsedTime;
+String a;
+String b= "Press E to start the game";
 public void paint(Graphics g) {
 		super.paintComponent(g);
 		bg.paint(g);
 
 sword.paint(g);
-
-ta.paint(g);
-collide();
 g.setColor(Color.white);
 g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+g.drawString(b,100,150);
+ta.paint(g);
+collide();
+
 g.drawString("Score: " + score , 30, 70);
 
 //timing
+
 long elapsedTime = System.currentTimeMillis() - startTime;
-long timeRemaining = 90000 - elapsedTime; 
+long timeRemaining = 60000 - elapsedTime; 
+String a="Time Remaining: " + timeRemaining/1000;
 g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-g.drawString("Time Remaining: " + timeRemaining/1000, 400, 70);
+if((int)timeRemaining<=0) {
+	a="Time Remaining: 0";
+	
+	g.drawString("Times Up! Your Score is "+ score + " out of 120", 100,100);
+	g.drawString("Press Space to try again!",100,150);
+	
+}
+
+g.drawString(a, 400, 70);
 
 
 
@@ -83,9 +99,24 @@ for(int i = 0; i<broc.length; i++) {
 		Frame f = new Frame();
 		
 	}
+	public void start() {
+		for(int i=0;i<broc.length;i++) {
+			broc[i].start();
+			let[i].start();
+			car[i].start();
+			corn[i].start();
+			on[i].start();
+			po[i].start();
+		}
+		b= "";
+		score=0;
+		startTime=System.currentTimeMillis();
+		a="Time Remaining: " + timeRemaining/1000;
+	}
 	
 	public Frame() {
 		JFrame f = new JFrame("Vegtable Slice");
+		JButton button=new JButton();
 		f.setSize(new Dimension(700, 600));
 		f.add(this);
 		f.setResizable(false);
@@ -102,12 +133,12 @@ for(int i = 0; i<broc.length; i++) {
 
 			
 			for(int i = 0; i<broc.length; i++) {
-					broc[i] = new Broccoli(r.nextInt(((650-10)+1)+10), -1*(i*500),true,false);
-					let[i] = new Lettuce(r.nextInt(((650-10)+1)+10), -1*(i*500),true,false);
-					on[i] = new Onion(r.nextInt(((650-10)+1)+10), -1*(i*500),true,false);
-					corn[i] = new Corn(r.nextInt(((650-10)+1)+10), -1*(i*500),true,false);
-					po[i] = new Potato(r.nextInt(((650-10)+1)+10), -1*(i*500),true,false);
-					car[i] = new Carrot(r.nextInt(((650-10)+1)+10), -1*(i*500),true,false);
+					broc[i] = new Broccoli(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
+					let[i] = new Lettuce(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
+					on[i] = new Onion(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
+					corn[i] = new Corn(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
+					po[i] = new Potato(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
+					car[i] = new Carrot(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 				}
 
 				
@@ -124,6 +155,26 @@ for(int i = 0; i<broc.length; i++) {
 			e.printStackTrace();
 		}
 		return tempImage;
+	}
+	public void restart() {
+		for(int i=0;i<broc.length;i++) {
+			broc[i].respawn();
+			let[i].respawn();
+			car[i].respawn();
+			corn[i].respawn();
+			on[i].respawn();
+			po[i].respawn();
+			broc[i].setHit(false);
+			let[i].setHit(false);
+			car[i].setHit(false);
+			corn[i].setHit(false);
+			on[i].setHit(false);
+			po[i].setHit(false);}
+		score=0;
+			startTime=System.currentTimeMillis();
+			a="Time Remaining: " + timeRemaining/1000;
+		
+		
 	}
 	
 	public void collide() {
@@ -229,6 +280,11 @@ for(int i = 0; i<broc.length; i++) {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		System.out.println(arg0.getKeyCode());
+		if(arg0.getKeyCode()==32) {
+			restart();		}
+		if(arg0.getKeyCode()==69) {
+			start();
+		}
 
 		// TODO Auto-generated method stub
 		
