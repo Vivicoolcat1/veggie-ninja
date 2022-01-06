@@ -17,15 +17,19 @@ import java.util.Random;
 		private AffineTransform tx;
 		private Random r;
 		private int respX;
+		private int startingY;
 		 private boolean isAlive;
 		 private boolean hasBeenHit;
+		 private int yv;
 	public Onion(int x, int y,boolean isAlive, boolean hasBeenHit) {
+		startingY=y;
+		yv=0;
 		this.x=x;
 		this.y=y;
 		this.isAlive=isAlive;
 		this.hasBeenHit=hasBeenHit;
 		r=new Random();
-		respX=r.nextInt(((650-10)+1)+10);
+		respX=r.nextInt(((550-10)+1)+10);
 		img = getImage("/imgs/onion.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
@@ -48,7 +52,7 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		y+=6; //falling down
+		y+=yv; //falling down
 		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
 		tx.setToTranslation(x, y);
 		tx.scale(.04,.04);
@@ -79,11 +83,14 @@ import java.util.Random;
 	public void die() {
 		changePicture("/imgs/slicedOnion.png");
 		}
-public void respawn() {
-	changePicture("/imgs/onion.png");
-	y=-100;
-	x=respX;
-}
+	public void respawn() {
+		changePicture("/imgs/Onion.png");
+		y=startingY;
+		x=respX;
+	}
+	public void start() {
+		yv=6;
+	}
 public Rectangle getRect() {
 	return new Rectangle(x,y,90,82);
 }
