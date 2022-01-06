@@ -58,7 +58,7 @@ import java.util.Random;
 	
 	//gravity and initial velocity 
 	public void start() {
-		yv=5;
+		yv=9;
 	}
 
 //creates a rectangle around object for collision 
