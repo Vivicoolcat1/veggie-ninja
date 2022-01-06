@@ -32,21 +32,19 @@ public Broccoli(int x, int y,boolean isAlive, boolean hasBeenHit) {
 	tx = AffineTransform.getTranslateInstance(x, y );
 		init(x, y); 
 }
+	
 public void paint(Graphics g) {
 	//these are the 2 lines of code needed draw an image on the screen
 	Graphics2D g2 = (Graphics2D) g;
 	
-	
 	//call update to update the actualy picture location
 	update();
-	
-	
-	
 	
 	g2.drawImage(img, tx, null);
 	
 
 }
+	
 /* update the picture variable location */
 private void update() {
 y+=yv; //falling down 
@@ -75,6 +73,8 @@ private Image getImage(String path) {
 	}
 	return tempImage;
 }
+
+//creates a rectangle around broccoli object for collision
 public Rectangle getRect() {
 	return new Rectangle(x, y, 85, 90);
 }
@@ -84,14 +84,19 @@ public void die() {
 changePicture("/imgs/slicedBroccoli.png");
 
 }
+
+//chnage image and return object to starting position
 public void respawn() {
 	changePicture("/imgs/broccoli.png");
 	y=startingY;
 	x=respX;
 }
+
+//gravity and starting velocity  
 public void start() {
 	yv=6;
 }
+	
 //getters and setters
 public int getX() {
 	return x;
