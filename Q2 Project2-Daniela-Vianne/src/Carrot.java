@@ -18,9 +18,13 @@ import java.util.Random;
 	 private boolean isAlive;
 	 private boolean hasBeenHit;
 		private int respX;
+		private int startingY;
+		private int yv;
 
 		private AffineTransform tx;
 	public Carrot(int x, int y,boolean isAlive, boolean hasBeenHit) {
+		startingY=y;
+		yv=0;
 		this.x=x;
 		this.y=y;
 		this.isAlive=isAlive;
@@ -49,12 +53,15 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		respX=r.nextInt(((650-10)+1)+10); //randomizing x value
-		y+=7; //falling down 
+		respX=r.nextInt(((550-10)+1)+10); //randomizing x value
+		y+=yv; //falling down 
 		tx.setToTranslation(x, y);
 		tx.scale(.35,.35);
 
 		
+	}
+	public void start() {
+		yv=7;
 	}public void changePicture(String newFileName) {
 		img = getImage(newFileName);
 		init(x, y);
@@ -66,7 +73,7 @@ import java.util.Random;
 		}
 	public void respawn() {
 		changePicture("/imgs/carrot.png");
-		y=-100;
+		y=startingY;
 		x=respX;
 	}
 	private void init(double a, double b) {
