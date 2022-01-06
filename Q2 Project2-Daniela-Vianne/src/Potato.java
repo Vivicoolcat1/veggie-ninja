@@ -17,15 +17,19 @@ import java.util.Random;
 	 private Random r;
 	 private boolean isAlive;
 	 private boolean hasBeenHit;
+	 private int startingY;
 		private int respX;
+		private int yv;
 		private AffineTransform tx;
 	public Potato(int x, int y,boolean isAlive, boolean hasBeenHit) {
+		startingY=y;
+		yv=0;
 		this.x=x;
 		this.y=y;
 		this.isAlive=isAlive;
 		this.hasBeenHit=hasBeenHit;
 		r=new Random();
-		respX=r.nextInt(((650-10)+1)+10);
+		respX=r.nextInt(((550-10)+1)+10);
 		img = getImage("/imgs/Potato.png"); //load the image for Tree
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
@@ -48,7 +52,7 @@ import java.util.Random;
 	}
 	/* update the picture variable location */
 	private void update() {
-		y+=5; //falling down 
+		y+=yv; //falling down 
 		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
 		tx.setToTranslation(x, y);
 		tx.scale(.2,.2);	
@@ -80,10 +84,12 @@ import java.util.Random;
 		}
 	public void respawn() {
 		changePicture("/imgs/Potato.png");
-		y=-100;
+		y=startingY;
 		x=respX;
 	}
-
+	public void start() {
+		yv=5;
+	}
 public Rectangle getRect() {
 	return new Rectangle(x+30,y+10,90,80);
 }
