@@ -16,10 +16,14 @@ import java.util.Random;
 	 private Random r;
 	 private boolean isAlive;
 	 private boolean hasBeenHit;
+	private int startingY;
 		private int respX;
+		private int yv;
 	 
 		private AffineTransform tx;
 	public Corn(int x, int y, boolean isAlive,boolean hasBeenHit) {
+		startingY=y;
+		yv=0;
 		this.x=x;
 		this.y=y;
 		this.isAlive=isAlive;
@@ -49,10 +53,13 @@ import java.util.Random;
 	/* update the picture variable location */
 	private void update() {
 		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
-		y+=3; //falling down 
+		y+=yv; //falling down 
 		
 		tx.setToTranslation(x, y);
 		tx.scale(.04,.04);
+	}
+	public void start() {
+		yv=5;
 	}
 public Rectangle getRect() {
 	return new Rectangle(x,y,120,100);
@@ -70,7 +77,7 @@ public void die() {
 	}
 public void respawn() {
 	changePicture("/imgs/Corn.png");
-	y=-100;
+	y=startingY;
 	x=respX;
 }
 	private void init(double a, double b) {
