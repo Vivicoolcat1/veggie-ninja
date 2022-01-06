@@ -57,7 +57,7 @@ import java.util.Random;
 	
 	//gravity and initial velocity 
 	public void start() {
-		yv=7;
+		yv=8;
 	}
 		
 	public void changePicture(String newFileName) {
