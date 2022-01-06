@@ -80,7 +80,7 @@ import java.util.Random;
 		
 	}
 	public void respawn() {
-		changePicture("/imgs/carrot.png");
+		changePicture("/imgs/Lettuce.png");
 		y=startingY;
 		x=respX;
 	}
