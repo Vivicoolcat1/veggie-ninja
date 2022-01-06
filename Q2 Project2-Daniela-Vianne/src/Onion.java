@@ -18,9 +18,9 @@ import java.util.Random;
 		private Random r;
 		private int respX;
 		private int startingY;
-		 private boolean isAlive;
-		 private boolean hasBeenHit;
-		 private int yv;
+		private boolean isAlive;
+		private boolean hasBeenHit;
+		private int yv;
 	public Onion(int x, int y,boolean isAlive, boolean hasBeenHit) {
 		startingY=y;
 		yv=0;
@@ -34,22 +34,19 @@ import java.util.Random;
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
 	}
+		
+	//paint method
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
 		
-		
 		//call update to update the actualy picture location
 		update();
 		
-		
-		
-		
 		g2.drawImage(img, tx, null);
-		
-	
 
 	}
+		
 	/* update the picture variable location */
 	private void update() {
 		y+=yv; //falling down
@@ -80,17 +77,23 @@ import java.util.Random;
 	}
 		
 //changing picture after collision 
-	public void die() {
-		changePicture("/imgs/slicedOnion.png");
-		}
-	public void respawn() {
-		changePicture("/imgs/Onion.png");
-		y=startingY;
-		x=respX;
-	}
-	public void start() {
-		yv=6;
-	}
+public void die() {
+	changePicture("/imgs/slicedOnion.png");
+}
+		
+//changes image of object and sets it back to its starting position 		
+public void respawn() {
+	changePicture("/imgs/Onion.png");
+	y=startingY;
+	x=respX;
+}
+
+//gravity and initial velocity 	
+public void start() {
+	yv=6;
+}
+		
+//creates rectangle around object for collision 
 public Rectangle getRect() {
 	return new Rectangle(x,y,90,82);
 }
