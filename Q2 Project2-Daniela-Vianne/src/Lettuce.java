@@ -35,22 +35,19 @@ import java.util.Random;
 			init(x, y); 
 			
 	}
+		
+	//paint method 
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
 		
-		
 		//call update to update the actualy picture location
 		update();
 		
-		
-		
-		
 		g2.drawImage(img, tx, null);
 		
-		
-
 	}
+		
 	/* update the picture variable location */
 	private void update() {
 		respX=r.nextInt(((650-10)+1)+10); //randomizing x value 
@@ -74,25 +71,31 @@ import java.util.Random;
 		}
 		return tempImage;
 	}
+		
 	public void changePicture(String newFileName) {
 		img = getImage(newFileName);
 		init(x, y);
 		
 	}
+		
+	//changes image of object and returns object to starting position 
 	public void respawn() {
 		changePicture("/imgs/Lettuce.png");
 		y=startingY;
 		x=respX;
 	}
+		
+	//gravity and initial velocity 	
 	public void start() {
 		yv=5;
 	}
+		
 	//changing picture after collision 
 	public void die() {
 		changePicture("/imgs/slicedCabbege.png");
+	}
 		
-		}
-
+	//creates rectangle around object for collision  
 	public Rectangle getRect() {
 		return new Rectangle(x, y, 120, 100);
 	}
