@@ -90,7 +90,7 @@ public void respawn() {
 
 //gravity and initial velocity 	
 public void start() {
-	yv=6;
+	yv=10;
 }
 		
 //creates rectangle around object for collision 
