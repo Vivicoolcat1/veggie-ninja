@@ -87,7 +87,7 @@ import java.util.Random;
 		
 	//gravity and initial velocity 	
 	public void start() {
-		yv=5;
+		yv=8;
 	}
 		
 	//changing picture after collision 
