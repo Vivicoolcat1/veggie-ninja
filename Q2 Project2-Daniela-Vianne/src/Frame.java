@@ -39,12 +39,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean pisDead=false;
 	boolean caisDead=false;
 	//initializing object arrays
-	Broccoli[] broc = new Broccoli[20];
-	Lettuce[] let = new Lettuce[20];
-	Corn[] corn = new Corn[20];
-	Onion[] on = new Onion[20];
-	Potato[] po = new Potato[20];
-	Carrot[] car = new Carrot[20];
+	Broccoli[] broc = new Broccoli[30];
+	Lettuce[] let = new Lettuce[30];
+	Corn[] corn = new Corn[30];
+	Onion[] on = new Onion[30];
+	Potato[] po = new Potato[30];
+	Carrot[] car = new Carrot[30];
 	 Image img =getImage("/imgs/x.png");
  long startTime=System.currentTimeMillis();
  long timeRemaining;
@@ -73,7 +73,7 @@ String a="Time Remaining: " + timeRemaining/1000;
 g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 if((int)timeRemaining<=0) {
 	a="Time Remaining: 0";
-	g.drawString("Times Up! Your Score is "+ score + " out of 120", 100,100);
+	g.drawString("Times Up! Your Score is "+ score + " out of 180", 100,100);
 	g.drawString("Press Space to try again!",100,150);
 }
 
