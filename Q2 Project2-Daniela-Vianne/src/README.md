@@ -18,6 +18,8 @@ In this game, the goal is to slice as many veggies as you can in the span of 90 
 
 - Launch ECLIPSE IDE 2018-09
 - Follow instructions as indicated!
+- Press E to start
+- Press space to restart
 
 ## Help
 
