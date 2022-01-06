@@ -20,8 +20,8 @@ import java.util.Random;
 		private int respX;
 		private int startingY;
 		private int yv;
-
 		private AffineTransform tx;
+		
 	public Carrot(int x, int y,boolean isAlive, boolean hasBeenHit) {
 		startingY=y;
 		yv=0;
@@ -35,34 +35,32 @@ import java.util.Random;
 		tx = AffineTransform.getTranslateInstance(x, y );
 			init(x, y); 
 	}
+	
+	//paint method
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
 		
-		
 		//call update to update the actualy picture location
 		update();
-		
-		
-		
-		
-		g2.drawImage(img, tx, null);
-		
-	
 
+		g2.drawImage(img, tx, null);
 	}
+		
 	/* update the picture variable location */
 	private void update() {
 		respX=r.nextInt(((550-10)+1)+10); //randomizing x value
 		y+=yv; //falling down 
 		tx.setToTranslation(x, y);
-		tx.scale(.35,.35);
-
-		
+		tx.scale(.35,.35);	
 	}
+	
+	//gravity and initial velocity 
 	public void start() {
 		yv=7;
-	}public void changePicture(String newFileName) {
+	}
+		
+	public void changePicture(String newFileName) {
 		img = getImage(newFileName);
 		init(x, y);
 	}
@@ -70,12 +68,15 @@ import java.util.Random;
 	//changing picture after collision 
 	public void die() {
 		changePicture("/imgs/cutCarrot.png");
-		}
+	}
+	
+	//restart method that changes the image and returns the object to the starting position
 	public void respawn() {
 		changePicture("/imgs/carrot.png");
 		y=startingY;
 		x=respX;
 	}
+		
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(.35,.35);
@@ -92,7 +93,7 @@ import java.util.Random;
 		return tempImage;
 	}
 
-
+//method that creates a rectangle around object for collision  
 public Rectangle getRect() {
 	return new Rectangle (x+5, y+7, 170,45);
 }
