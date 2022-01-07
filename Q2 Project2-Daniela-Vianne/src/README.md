@@ -52,6 +52,12 @@ This class is for the potato object, one of the slowest veggies. There is an arr
 
 ![potato](https://user-images.githubusercontent.com/78383220/148603985-86d54a1d-5819-4060-bc2b-cde2b972b903.PNG)
 
+### Strawberry Class:
+
+This class is for the strawberry object! If it is hit by the knife, it will explode and return your score all the way back to zero! So be aware, and avoid the strawberry to get the highest score possible.
+
+![strawberry](https://user-images.githubusercontent.com/78383220/148610162-b1aef06b-8cd0-494d-b5e1-594aba637a66.PNG)
+
 ### Knife Class:
 
 This class is for the knife, one of the main objects in the game. The knife is connected to cursor in the frame. You use the knife to slice the veggies in order to earn points, but be aware of the starberry, because when hit, you score goes all the way back to zero! 
