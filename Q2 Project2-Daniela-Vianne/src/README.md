@@ -64,6 +64,32 @@ This is the class for the backgound, which makes the game come to life in a city
 
 ![background](https://user-images.githubusercontent.com/78383220/148604820-252230a2-089f-45f5-b7ae-792d8ed0f5bb.PNG)
 
+## Methods
+
+### Paint Method:
+
+The paint method is a major part of the game as it paints all of the veggies in their respective arrays using a for loop. This method also includes the timing (60 second timer) and scoring used in the game!
+
+![paint](https://user-images.githubusercontent.com/78383220/148606614-041c67ed-832d-4bf3-921e-dd0c0ead57c8.PNG)
+
+### Collide Method:
+
+The collide method is another crucial part of the game, as it determines whether or not the knife intersects the veggetable objects. If the objects intersect, then the score is updated, and the image of the original vegetable is changed to the cut-up version. 
+
+![collide](https://user-images.githubusercontent.com/78383220/148606564-4e6d84bf-47c5-4feb-bf24-c654173a9a94.PNG)
+
+### Respawn Method:
+
+The respawn method is located in each respective veggetable class, and returns the objects to their starting position: the top but off screen.
+
+![respawn](https://user-images.githubusercontent.com/78383220/148606637-db04df11-c2fd-4afa-a93a-1cdf3c75a566.PNG)
+
+### Restart Method:
+
+The restart method calls upon the respawn method for each veggie, and when the space key is pressed, the method is executed. Thsi method also resets the object to their original state. 
+
+![restart](https://user-images.githubusercontent.com/78383220/148606584-ce742149-4543-484e-96cb-4e4274029f83.PNG)
+
 ## Help
 
 Reopen or relaunch eclipse or the game if you run into any issues!
