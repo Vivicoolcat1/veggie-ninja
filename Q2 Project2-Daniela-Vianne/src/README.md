@@ -62,7 +62,7 @@ This class is for the knife, one of the main objects in the game. The knife is c
 
 This is the class for the backgound, which makes the game come to life in a city setting, and it adds a visual aesthetic to the overalll game!
 
-![background](https://user-images.githubusercontent.com/78383220/148604672-46a3698d-8f0d-4fc8-b326-9cfe6c3d858e.PNG)
+![background](https://user-images.githubusercontent.com/78383220/148604820-252230a2-089f-45f5-b7ae-792d8ed0f5bb.PNG)
 
 ## Help
 
