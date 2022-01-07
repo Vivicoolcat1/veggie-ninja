@@ -10,9 +10,9 @@ In this game, the goal is to slice as many veggies as you can in the span of 60 
 
 ## How to Play
 
--Press E to start
--Move cursor to move knife
--Press space to restart
+- Press E to start
+- Move cursor to move knife
+- Press space to restart
 
 ## Classes
 
