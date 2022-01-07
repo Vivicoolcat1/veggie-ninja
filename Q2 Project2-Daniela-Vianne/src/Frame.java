@@ -39,6 +39,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Onion[] on = new Onion[30];
 	Potato[] po = new Potato[30];
 	Carrot[] car = new Carrot[30];
+	Strawberry[] s= new Strawberry[20];
 	 Image img =getImage("/imgs/x.png");
  long startTime=System.currentTimeMillis();
  long timeRemaining;
@@ -81,6 +82,9 @@ for(int i = 0; i<broc.length; i++) {
 	po[i].paint(g);
 	car[i].paint(g);
 }
+	for (int i = 0; i < s.length; i++) {
+	s[i].paint(g);
+}
 }
 	
 	public static void main(String[] arg) {
@@ -97,6 +101,9 @@ for(int i = 0; i<broc.length; i++) {
 			corn[i].start();
 			on[i].start();
 			po[i].start();
+		}
+		for (int i = 0; i < s.length; i++) {
+			s[i].start();
 		}
 		
 		b= "";
@@ -128,6 +135,9 @@ for(int i = 0; i<broc.length; i++) {
 					corn[i] = new Corn(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 					po[i] = new Potato(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 					car[i] = new Carrot(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
+			}
+		for(int i=0; i<s.length;i++) {
+				s[i]=new Strawberry (r.nextInt(((550-10)+1)+10), -1*(i*750)-200,true,false);
 			}
 		
 	}
@@ -226,6 +236,19 @@ for(int i = 0; i<broc.length; i++) {
 	    	po[i].setHit(true);
 	    	}
 		}	
+		for (int i = 0; i < s.length; i++) {
+		
+				if(s[i].getRect().intersects(sword.getRect())) {
+		    		s[i].die();
+		    		s[i].setDead(false);
+		    	if(s[i].getAlive()==false && s[i].getHit()==false)
+		    		score =0;
+		    	s[i].setHit(true);
+		    	}
+			
+			
+
+		}
 	}
 	
 	
