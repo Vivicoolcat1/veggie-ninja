@@ -39,7 +39,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Onion[] on = new Onion[30];
 	Potato[] po = new Potato[30];
 	Carrot[] car = new Carrot[30];
-	Strawberry[] s= new Strawberry[30];
+	Strawberry[] s= new Strawberry[23];
 	 Image img =getImage("/imgs/x.png");
  long startTime=System.currentTimeMillis();
  long timeRemaining;
@@ -60,7 +60,8 @@ public void paint(Graphics g) {
 g.setColor(Color.white);
 g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 g.drawString(b,100,150);
-	g.drawString(c,100,200);
+g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+	g.drawString(c,0,200);
 g.drawString("Score: " + score , 30, 70);
 
 //timing
@@ -140,7 +141,7 @@ for(int i = 0; i<broc.length; i++) {
 					car[i] = new Carrot(r.nextInt(((550-10)+1)+10), -1*(i*500)-100,true,false);
 			}
 		for(int i=0; i<s.length;i++) {
-				s[i]=new Strawberry (r.nextInt(((550-10)+1)+10), -1*(i*750)-1000,true,false);
+				s[i]=new Strawberry (r.nextInt(((550-10)+1)+10), -1*(i*1000)-1000,true,false);
 			}
 		
 	}
