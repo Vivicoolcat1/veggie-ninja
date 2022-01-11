@@ -4,6 +4,10 @@ We hope you enjoy this new version of the universally known game of Fruit Ninja!
 
 ![2022-01-07 13-04-44](https://user-images.githubusercontent.com/78383220/148607701-ed14e81f-3fa3-42ee-ba6e-d03f8641d33a.gif)
 
+https://user-images.githubusercontent.com/78383220/149013060-d4247263-e95c-4bda-b5b6-74fdf8d2afb9.mp4
+
+
+
 ## Description
 
 In this game, the goal is to slice as many veggies as you can in the span of 60 seconds! Some veggies move faster than others, and the locations are all randomized, making the game a little unpredictable. You will use a knife to slice the different vegetables, which include: corn, carrots, potatos, lettuce, broccoli, and onion. As the game progress, more and more veggies fall onto the screen, and players can slice more than one vegetable at a time. 
